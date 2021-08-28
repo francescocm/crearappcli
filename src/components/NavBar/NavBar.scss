@@ -1,0 +1,15 @@
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10%;
+    background-color: rgb(223, 142, 67);
+    color: rgb(195, 204, 255);
+
+    a {
+        text-transform: uppercase;
+        color: white;
+        text-decoration: none;
+        font-size: 22px;
+    }
+}
