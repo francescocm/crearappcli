@@ -5,7 +5,8 @@ export const stock = [
         nombre: "Zapatillas 1",
         precio: 6000,
         desc: "Las cómodas",
-        img: "http://via.placeholder.com/200"
+        img: "http://via.placeholder.com/200",
+        stock: 10
     },
     {
         id: 2,
@@ -13,7 +14,8 @@ export const stock = [
         nombre: "Zapatillas 2",
         precio: 8000,
         desc: "Las de Jordan",
-        img: "http://via.placeholder.com/200"
+        img: "http://via.placeholder.com/200",
+        stock: 10
     },
     {
         id: 3,
@@ -21,7 +23,8 @@ export const stock = [
         nombre: "Remera 1",
         precio: 2000,
         desc: "Remera rock",
-        img: "http://via.placeholder.com/200"
+        img: "http://via.placeholder.com/200",
+        stock: 10
     },
     {
         id: 4,
@@ -29,7 +32,8 @@ export const stock = [
         nombre: "Remera 2",
         precio: 1700,
         desc: "La de dormir",
-        img: "http://via.placeholder.com/200"
+        img: "http://via.placeholder.com/200",
+        stock: 10
     },
     {
         id: 5,
@@ -37,7 +41,8 @@ export const stock = [
         nombre: "Pantalón 1",
         precio: 4000,
         desc: "El chupin incómodo",
-        img: "http://via.placeholder.com/200"
+        img: "http://via.placeholder.com/200",
+        stock: 10
     },
     {
         id: 6,
@@ -45,6 +50,7 @@ export const stock = [
         nombre: "Pantalón 2",
         precio: 4200,
         desc: "De laburo",
-        img: "http://via.placeholder.com/200"
+        img: "http://via.placeholder.com/200",
+        stock: 10
     }
 ]

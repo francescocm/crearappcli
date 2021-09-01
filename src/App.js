@@ -2,49 +2,47 @@ import { NavBar } from "./components/NavBar/NavBar";
 import "./styles/styles.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer";
-import { Clock } from "./components/Clock/Clock";
-import { ClickTracker } from "./components/ClickTracker/ClickTracker";
-import { useState } from "react";
-import {BrowserRouter, Switch, Route} from "react-router-dom"
+import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom"
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainer";
+import { CartProvider } from "./context/CartContext";
+import { CartScreen } from "./components/CartScreen/CartScreen";
+import { UIContextProvider } from "./context/UIContext";
 
 
 function App() {
 
+
+
   return (
     <>
-      <BrowserRouter>
-           
-        <NavBar/>
-      
-        <Switch>
-          <Route exact path="/">
+      <UIContextProvider>
+        <CartProvider>
+          <BrowserRouter>
+          <NavBar/>
+           <Switch>
+            <Route exact path="/">
               <ItemListContainer/>
-          </Route>
-          <Route exact path="/category/:catId">
+            </Route>
+            <Route exact path="/category/:catId">
               <ItemListContainer/>
-          </Route>
-
-          <Route exact path="/detail/:itemId">
+            </Route>
+            <Route exact path="/detail/:itemId">
             <ItemDetailContainer/>
-          </Route>
-          
-
-          <Route exact path="/nosotros">
+            </Route>
+            <Route exact path="/nosotros">
               <h1>Nosotros</h1>
-          </Route>
-          <Route exact path="/cart">
-              <h1>Carrito</h1>
-          </Route>
+            </Route>
+            <Route exact path="/cart">
+              <CartScreen/>
+            </Route>
+            <Route path="*">
+              <Redirect to="/"/>
+            </Route>
+           </Switch>
+          </BrowserRouter>
 
-
-
-
-
-        </Switch>
-      
-      
-      </BrowserRouter>
+        </CartProvider>
+      </UIContextProvider>
     </>
     
   );
