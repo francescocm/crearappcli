@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { UIContext } from "../../context/UIContext"
-import { pedirDatos } from "../helpers/pedirDatos"
+import { getFirestore } from "../../firebase/config"
 import { ItemDetail } from "./ItemDetail"
+import { Loader } from "../Loader/Loader"
 
 
 
@@ -18,17 +19,22 @@ export const ItemDetailContainer = () => {
     useEffect(()=>{
         setLoading(true)
 
-        pedirDatos()
-            .then( res => {
-                setItem( res.find( prod => prod.id === parseInt(itemId)) )
+        const db = getFirestore()
+        const productos = db.collection('productos')
+        const item = productos.doc(itemId)
+
+        item.get()
+            .then((doc) => {
+            setItem( {...doc.data(), id: doc.id} )
             })
             .finally(()=> { setLoading(false)})
-    }, [itemId])
+
+    }, [itemId, setLoading])
 
     return (
         <div>
             {loading
-                ? <h2>Cargando...</h2>
+                ? <Loader/>
                 : <ItemDetail {...item}/>
             }
         </div>
