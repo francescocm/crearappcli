@@ -17,35 +17,49 @@ function App() {
   return (
     <>
       <UIContextProvider>
+
         <CartProvider>
+
           <BrowserRouter>
+
           <NavBar/>
+
            <Switch>
+
             <Route exact path="/">
               <ItemListContainer/>
             </Route>
+
             <Route exact path="/category/:catId">
               <ItemListContainer/>
             </Route>
+
             <Route exact path="/detail/:itemId">
             <ItemDetailContainer/>
             </Route>
+
             <Route exact path="/nosotros">
               <h1>Nosotros</h1>
             </Route>
+
             <Route exact path="/cart">
               <CartScreen/>
             </Route>
+
             <Route exact path="/checkout">
               <Checkout/>
             </Route>
+
             <Route path="*">
               <Redirect to="/"/>
             </Route>
+
            </Switch>
+
           </BrowserRouter>
 
         </CartProvider>
+        
       </UIContextProvider>
     </>
     

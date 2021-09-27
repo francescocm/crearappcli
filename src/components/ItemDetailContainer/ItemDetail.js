@@ -2,13 +2,14 @@ import React, { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import { CartContext } from "../../context/CartContext"
 import { Counter } from "../Counter/Counter"
+import './ItemDetail.css'
 
 export const ItemDetail = ({category, id, nombre, desc, img, precio, stock}) => {
 
     const {agregarAlCarrito, isInCart} = useContext(CartContext)
 
     const [cantidad, setCantidad] = useState(1)
-    // Agregar al carrito
+    
     const handleAdd = () => {
         agregarAlCarrito({
             category, id, nombre, desc, img, precio, cantidad
@@ -16,12 +17,12 @@ export const ItemDetail = ({category, id, nombre, desc, img, precio, stock}) => 
     }
     
     return (
-        <div>
+        <div className="item__section">
             <h2>{nombre}</h2>
             <p>Precio: {precio}</p>
 
             
-            <img src={img} alt={nombre}></img>
+            <img className="img__detail__section" src={img} alt={nombre}></img>
             
             <p>{desc}</p>
             <Counter 

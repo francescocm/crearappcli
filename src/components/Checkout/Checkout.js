@@ -3,6 +3,7 @@ import { Redirect } from 'react-router'
 import Swal from 'sweetalert2'
 import { CartContext } from '../../context/CartContext'
 import { generarOrden } from '../../firebase/generarOrden'
+import './Checkout.css'
 
 
 export const Checkout = () => {
@@ -12,7 +13,7 @@ export const Checkout = () => {
     const [values, setValues] = useState({
         nombre: '',
         email: '',
-        tel: 0,
+        tel: '',
     })
 
     const handleInputChange = (e) => {
@@ -30,8 +31,8 @@ export const Checkout = () => {
                 .then( res => {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Su compra fue registrada!',
-                        text: `Guarde este identificador: ${res}`,
+                        title: 'Gracias!',
+                        text: `Constancia de compra: ${res}`,
                         confirmButtonText: 'Genial!'
                     })
 
@@ -55,7 +56,7 @@ export const Checkout = () => {
 
     return (
         <div>
-            <h2>Checkout</h2>
+            <h2 className="check__main">Checkout</h2>
             <hr/>
             
         {!carrito.length 
@@ -68,6 +69,8 @@ export const Checkout = () => {
                         type="text"
                         value={values.nombre}
                         onChange={handleInputChange}
+                        className="form-control"
+                        placeholder="Nombre *"
                         name="nombre"
                         required
                     />
@@ -75,6 +78,8 @@ export const Checkout = () => {
                         type="tel"
                         value={values.tel}
                         onChange={handleInputChange}
+                        className="form-control"
+                        placeholder="Número telefónico *"
                         name="tel"
                         required
                     />
@@ -82,11 +87,15 @@ export const Checkout = () => {
                         type="email"
                         value={values.email}
                         onChange={handleInputChange}
+                        placeholder="Tu Email *" 
+                        className="form-control"
                         name="email"
                         required
                     />
-                    <button type="submit">Submit</button>
+                    
+                    <button type="submit" className="btn btn-primary section__form__button">Submit</button>
                 </form>
+                <p> * Campos obligatorios</p>
             </div>
         }
 

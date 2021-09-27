@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import './Counter.css'
 
 export const Counter = ({max, cantidad, setCantidad, agregar, agregado}) => {
 
@@ -18,13 +19,13 @@ export const Counter = ({max, cantidad, setCantidad, agregar, agregado}) => {
 
     return (
         <>
-        <div className="d-flex">
+        <div className="d-flex section__center">
 
             {
                 agregado
-                    ? <Link to="/cart" className="btn btn-success">Terminar mi compra</Link>
+                    ? <Link to="/cart" className="btn btn-success">Finalizar compra</Link>
                     :
-                    <div>
+                    <div className="counter__section">
                     <button className="btn btn-primary mx-1" onClick={handleRestar}>-</button>
                     <p>{cantidad}</p>
                     <button className="btn btn-primary mx-1" onClick={handleSumar}>+</button>
